@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>872676115507-454vnpfhu8fk2vdj838qap7drdm1tpjk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.872676115507-454vnpfhu8fk2vdj838qap7drdm1tpjk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDWI4NTieNW-O6ElFVpCiFtCF9J13XbriU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>872676115507</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.wowNew</string>
+	<key>PROJECT_ID</key>
+	<string>wowtest-5b6a8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wowtest-5b6a8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:872676115507:ios:4568152ae8a785174d4f46</string>
+	<key>DATABASE_URL</key>
+	<string>https://wowtest-5b6a8.firebaseio.com</string>
+</dict>
+</plist>
