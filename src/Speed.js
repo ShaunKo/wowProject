@@ -34,6 +34,7 @@ import {
     ListItem,
 } from 'react-native-elements';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import DatePicker from 'react-native-date-picker'
 import Modal from 'react-native-modalbox';
 //資料放在Location.js
 import { city } from './Location.js';
@@ -354,6 +355,7 @@ export default class Speed extends Component {
         } else {
             //抓資料
             let arrayData = [];
+            var i = '';
             for (i = 0; i < this.state.allData.length; i++) {
                 let content = this.state.allData[i];
                 let skill1 = content.skill1;
@@ -620,12 +622,51 @@ export default class Speed extends Component {
                                 this.setState({ dateTxt: s, hasChangedS: true, hasChangedL: true, minD: d, dateTxt1: '--------' });
                             }} />
                             :
-                            <DateTimePicker mode="time" value={new Date()} />
+                            <DatePicker
+                            date={this.state.date}
+                            maximumDate={this.state.maxDate}
+                            minimumDate={this.state.minDate}
+                            minuteInterval={this.state.minuteInterval}
+                            onDateChange={(date) => {
+                                this.setState({ date: date });
+                                //顯示出來的數字
+                                var year = date.getFullYear();//2019
+                                var month = date.getMonth() + 1;//事實上9月是8
+                                console.log(month)//9
+                                var date1 = date.getDate();
+                                var hour = date.getHours();
+                                var mins = date.getMinutes();
+
+                                //顯示出來了字串
+                                var d = new Date()
+                                d.setFullYear(year)
+                                d.setMonth(month - 1)//9，9月
+                                d.setDate(date1)
+                                d.setHours(hour)
+                                d.setMinutes(mins)
+                                if (month < 10) {
+                                    month = '0' + month
+                                }
+                                if (date1 < 10) {
+                                    date1 = '0' + date1
+                                }
+                                if (hour < 10) {
+                                    hour = '0' + hour
+                                }
+                                if (mins < 10) {
+                                    mins = '0' + mins
+                                }
+                                console.log(d)
+
+                                var s = year + '-' + month + '-' + date1 + ' ' + hour + ':' + mins;
+                                this.setState({ dateTxt: s, hasChangedS: true, hasChangedL: true, minD: d, dateTxt1: '--------' });
+                            }}
+                          />
                         }
                         <Button onPress={() => this.setState({ isOpen: false })} style={[styles.btn, styles.btnModal]} title='確認' />
                     </Modal>
                     <Modal coverScreen isOpen={this.state.isOpen1} onClosed={() => this.setState({ isOpen1: false })} style={styles.modal4} position={"center"} >
-                    
+                    {Platform.OS === 'ios' ?
                         <DateTimePicker
                             value={this.state.date}
                             maximumDate={this.state.maxDate}
@@ -654,6 +695,48 @@ export default class Speed extends Component {
                                 var s = year + '-' + month + '-' + date1 + ' ' + hour + ':' + mins;
                                 this.setState({ dateTxt1: s, hasChangedW: true, });
                             }} />
+                            :
+                            <DatePicker
+                            date={this.state.date}
+                            maximumDate={this.state.maxDate}
+                            minimumDate={this.state.minD}
+                            minuteInterval={this.state.minuteInterval}
+                            onDateChange={(date) => {
+                                this.setState({ date: date });
+                                //顯示出來的數字
+                                var year = date.getFullYear();//2019
+                                var month = date.getMonth() + 1;//事實上9月是8
+                                console.log(month)//9
+                                var date1 = date.getDate();
+                                var hour = date.getHours();
+                                var mins = date.getMinutes();
+
+                                //顯示出來了字串
+                                var d = new Date()
+                                d.setFullYear(year)
+                                d.setMonth(month - 1)//9，9月
+                                d.setDate(date1)
+                                d.setHours(hour)
+                                d.setMinutes(mins)
+                                if (month < 10) {
+                                    month = '0' + month
+                                }
+                                if (date1 < 10) {
+                                    date1 = '0' + date1
+                                }
+                                if (hour < 10) {
+                                    hour = '0' + hour
+                                }
+                                if (mins < 10) {
+                                    mins = '0' + mins
+                                }
+                                console.log(d)
+
+                                var s = year + '-' + month + '-' + date1 + ' ' + hour + ':' + mins;
+                                this.setState({ dateTxt1: s, hasChangedW: true, });
+                            }}
+                          />
+                        }
                            
                         <Button onPress={() => this.setState({ isOpen1: false })} style={[styles.btn, styles.btnModal]} title="確認" />
                     </Modal>
